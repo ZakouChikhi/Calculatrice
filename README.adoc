@@ -1,0 +1,34 @@
+= Test fonctionnel d'une application JFX
+:imagesdir: ./images
+
+
+Nous voulons tester plusieurs scénarios pour une application de calculatrice développée en JFx.
+
+Voici les scénarios :
+
+. L'utilisateur clique sur le bouton calculer
+image:menu-1.png[] puis tape l'opération :
+1+2-5*2 avant d'appuyer sur =.
+L'écran devrait afficher -4.0
++
+image:calculatriceavecbouton.png[]
+
+
+. L'utilisateur fait deux opérations puis va consulter l'historique pour retrouver ses deux opérations.
++
+image:historique.png[]
+
+
+
+Vous devez développer ces deux _tests cases_ avec TestFx. Attention les deux tests-cases doivent être indépendant avec une réinitialisation du modèle pour éviter les effets de bord.
+Vous allez normalement rencontrer quelques difficultés techniques :
+
+* Il va falloir identifié certains composants qui ne le sont pas encore
+* Il va falloir ajouter des options à la VM dans le Runner : *--add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED*
+* Vous allez vous rendre compte qu'il y a un soucis lors de l'exécution des tests cases car le lancement de l'application va se faire en dehors de la thread JFx. Pour pouvoir lancer l'application il vous faudra ruser :
++
+
+[source, java]
+----
+Platform.runLater(() -> controleur.run(););
+----
