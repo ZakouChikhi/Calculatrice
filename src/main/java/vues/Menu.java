@@ -37,6 +37,9 @@ public class Menu implements VueInteractive {
         BorderPane.setAlignment(vBox,Pos.CENTER);
 
         Button gotoCalculer = new Button("Calculer");
+        gotoCalculer.setId("Calculer");
+
+
 
         gotoCalculer.setFont(Font.font(24));
         gotoCalculer.setMaxSize(Double.MAX_VALUE,Double.MAX_VALUE);
